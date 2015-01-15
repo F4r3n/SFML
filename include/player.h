@@ -1,0 +1,20 @@
+#ifndef PLAYER_H
+#define PLAYER_H
+
+#include "entity.h"
+
+class Player : public Entity {
+	public:
+		Player();
+		~Player();
+		void draw();
+		bool isAlive();
+
+	private:
+		int _life;
+
+
+
+};
+
+#endif
