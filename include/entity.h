@@ -7,6 +7,7 @@ class Entity {
 		virtual ~Entity()=0;
 		virtual sf::Shape* draw()=0;
 		virtual bool isAlive()=0;
+		virtual void update(float dt) = 0;
 
 };
 
