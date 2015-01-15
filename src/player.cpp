@@ -9,9 +9,9 @@ Player::Player(){
 Player::~Player() {
 }
 
-void Player::draw() {
+sf::Shape* Player::draw() {
 
-
+return 0;
 }
 
 bool Player::isAlive() {

@@ -2,16 +2,17 @@
 #define PLAYER_H
 
 #include "entity.h"
-
+#include "Box.h"
 class Player : public Entity {
 	public:
 		Player();
 		~Player();
-		void draw();
+		sf::Shape* draw();
 		bool isAlive();
 
 	private:
 		int _life;
+		Box _box;
 
 
 
