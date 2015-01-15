@@ -2,6 +2,7 @@
 #define LEVEL_H
 
 #include "entity.h"
+#include "player.h"
 #include <vector>
 
 #include <SFML/Graphics.hpp>

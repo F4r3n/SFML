@@ -2,7 +2,7 @@
 #define PLAYER_H
 
 #include "entity.h"
-#include "Box.h"
+#include "box.h"
 class Player : public Entity {
 	public:
 		Player();
@@ -12,7 +12,12 @@ class Player : public Entity {
 
 	private:
 		int _life;
-		Box _box;
+		Box *_box;
+		sf::Shape *_s;
+		float _x;
+		float _y;
+		const float W = 100;
+		const float H = 100;
 
 
 
