@@ -3,6 +3,7 @@
 
 #include "entity.h"
 #include "player.h"
+#include "map.h"
 #include <vector>
 
 #include <SFML/Graphics.hpp>
@@ -20,6 +21,7 @@ class Level {
 	private:
 		std::vector<Entity*> _entities;
 		int _n;
+		Map *_map;
 		sf::RenderWindow _window;
 
 };

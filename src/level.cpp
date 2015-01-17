@@ -2,10 +2,12 @@
 #include <iostream>
 
 Level::Level(int n):_n(n) {
+	
 }
 
 Level::Level() {
-
+	_map = new Map(5,2);
+	_map->load("map");
 	_entities.push_back(new Player());
 }
 
