@@ -17,9 +17,9 @@ class Level {
 
 
 	private:
-	std::vector<Entity*> _entities;
-	int _n;
-	sf::RenderWindow _window;
+		std::vector<Entity*> _entities;
+		int _n;
+		sf::RenderWindow _window;
 
 };
 

@@ -9,4 +9,6 @@ void Screen::init(Engine *engine) {
 }
 
 Screen::~Screen() {
+
 }
+
