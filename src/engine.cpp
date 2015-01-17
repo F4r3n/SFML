@@ -1,12 +1,13 @@
 #include "engine.h"
 
+
 Engine::Engine() {
 	
 }
 
 void Engine::run() {
 
-	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
+	sf::RenderWindow window(sf::VideoMode(EngineConst::WIDTH, EngineConst::HEIGHT), "SFML works!");
 	sf::Clock clock;
 	init();
 

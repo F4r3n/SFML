@@ -3,6 +3,7 @@
 
 #include "screen.h"
 #include "game.h"
+#include "engineConst.h"
 #include <SFML/Graphics.hpp>
 
 class Engine {
@@ -13,6 +14,7 @@ class Engine {
 		void draw(sf::RenderWindow &window);
 		void update(float dt);
 		void init();
+
 		Engine();
 
 	private:

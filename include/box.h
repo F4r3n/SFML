@@ -6,8 +6,7 @@ class Box {
 		Box(float x,float w, float y, float h);
 		~Box();
 		bool AABB(Box b);
-	private:
-		float _x,_w,_y,_h;
+		float x,w,y,h;
 		
 
 };

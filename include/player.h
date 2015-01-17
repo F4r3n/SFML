@@ -21,8 +21,8 @@ class Player : public Entity {
 		float _x;
 		float _y;
 		float _speed = 10000;
-		const float W = 100;
-		const float H = 100;
+		const float W = 20;
+		const float H = 20;
 
 
 

@@ -1,4 +1,5 @@
 #include "player.h"
+#include "engineConst.h"
 #include <iostream>
 
 Player::Player(){
@@ -7,7 +8,7 @@ Player::Player(){
 	_dx = 0;
 	_dy = 0;
 	_box = new Box(_x,W,_y,H);
-	_s = new sf::CircleShape(10.0f);
+	_s = new sf::RectangleShape(sf::Vector2f(W,H));
 }
 
 
@@ -26,10 +27,6 @@ void Player::update(float dt) {
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		accX-=acc;
 	}
-	_dx *=0.9;
-	_dx +=dt*accX;
-	_x  +=dt*_dx;
-
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 		accY+=acc;
 	}
@@ -38,6 +35,30 @@ void Player::update(float dt) {
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		accY-=acc;
 	}
+
+	if(_x >= EngineConst::WIDTH-_box->w) {
+		_dx = 0;
+		_x = EngineConst::WIDTH-_box->w;
+	}
+	if(_x <=0) {
+		_dx = 0;
+		_x = 0;
+	}
+
+	if(_y >= EngineConst::HEIGHT-_box->h) {
+		_dy = 0;
+		_y = EngineConst::HEIGHT-_box->h;
+	}
+	if(_y <=0) {
+		_dy = 0;
+		_y = 0;
+	}
+	
+
+	_dx *=0.9;
+	_dx +=dt*accX;
+	_x  +=dt*_dx;
+
 	_dy *=0.9;
 	_dy +=dt*accY;
 	_y  +=dt*_dy;

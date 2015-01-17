@@ -22,6 +22,7 @@ void Level::draw(sf::RenderWindow &window) {
 		window.draw(*s);
 	}
 }
+
 void Level::update(float dt) {
 
 	for (auto e : _entities) {
@@ -29,7 +30,6 @@ void Level::update(float dt) {
 	}
 
 }
+
 Level::~Level() {
-	/*	for(auto &e : _entities)
-		delete e;*/
 }
