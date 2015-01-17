@@ -1,11 +1,19 @@
 #ifndef GAME_H
 #define GAME_H
 
-class Game {
+#include "level.h"
+#include "screen.h"
+
+class Game: public Screen {
+
 	public:
 		Game();
+		void update(float dt);
+		void draw();
 		~Game();
-		void run();
+	private:
+		Level l;
+
 
 };
 

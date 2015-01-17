@@ -6,7 +6,7 @@ BIN= bin/
 
 all: main
 
-main: $(BIN)main.o $(BIN)player.o $(BIN)entity.o $(BIN)box.o $(BIN)level.o $(BIN)game.o
+main: $(BIN)main.o $(BIN)player.o $(BIN)entity.o $(BIN)box.o $(BIN)level.o $(BIN)game.o $(BIN)engine.o $(BIN)screen.o
 	$(CXX) -o  $@ $^ $(CFLAGS) $(INCLUDE)
 
 $(BIN)%.o: $(SRC)%.cpp

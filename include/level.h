@@ -10,6 +10,7 @@ class Level {
 
 	public:
 		Level(int n);
+		Level();
 		~Level();
 		void draw(sf::RenderWindow &window);
 		void update(float dt);
