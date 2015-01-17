@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "level.h"
 #include "game.h"
+#include "screenManager.h"
 #include <iostream>
 
 Game::Game() {
@@ -17,6 +18,7 @@ void Game::run() {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
 	sf::CircleShape *shape = new sf::CircleShape(100.0f);
 	shape->setFillColor(sf::Color::Green);
+	ScreenManager scm;
 	Level l(0);
 	sf::Clock clock;
 

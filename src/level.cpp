@@ -1,7 +1,8 @@
 #include "level.h"
 #include <iostream>
+
 Level::Level(int n):_n(n) {
-_entities.push_back(new Player());
+	_entities.push_back(new Player());
 }
 
 void Level::draw(sf::RenderWindow &window) {
@@ -18,6 +19,6 @@ void Level::update(float dt) {
 
 }
 Level::~Level() {
-/*	for(auto &e : _entities)
+	/*	for(auto &e : _entities)
 		delete e;*/
 }
