@@ -9,10 +9,11 @@ class Game: public Screen {
 	public:
 		Game();
 		void update(float dt);
-		void draw();
+		void draw(sf::RenderWindow &window);
+		void changeLevel();
 		~Game();
 	private:
-		Level l;
+		Level _level;
 
 
 };

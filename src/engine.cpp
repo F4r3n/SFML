@@ -1,6 +1,6 @@
 #include "engine.h"
 
-Engine::Engine(): {
+Engine::Engine() {
 	
 }
 
@@ -36,17 +36,16 @@ void Engine::run() {
 
 void Engine::setScreen(Screen *screen) {	
 	_screen = screen;
-	_screen->init(this);
 }
 
 void Engine::init() {
 	setScreen(new Game());
-
 }
 
 void Engine::draw(sf::RenderWindow &window) {
+	_screen->draw(window);
 
 }
 void Engine::update(float dt) {
-
+	_screen->update(dt);
 }

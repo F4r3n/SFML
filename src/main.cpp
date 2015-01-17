@@ -1,9 +1,9 @@
-#include "game.h"
+#include "engine.h"
 
 int main()
 {
-	Game game;
-	game.run();
+	Engine engine;
+	engine.run();
 
     return 0;
 }

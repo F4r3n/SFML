@@ -2,11 +2,15 @@
 #include <iostream>
 
 Level::Level(int n):_n(n) {
-	_entities.push_back(new Player());
 }
 
 Level::Level() {
 
+	_entities.push_back(new Player());
+}
+
+void Level::setLevel(int n) {
+	_n =n;
 }
 
 void Level::draw(sf::RenderWindow &window) {
