@@ -6,11 +6,7 @@ BIN= bin/
 
 all: main
 
-<<<<<<< HEAD
 main: $(BIN)main.o $(BIN)player.o $(BIN)entity.o $(BIN)box.o $(BIN)level.o $(BIN)game.o $(BIN)engine.o $(BIN)screen.o
-=======
-main: $(BIN)main.o $(BIN)player.o $(BIN)entity.o $(BIN)box.o $(BIN)level.o $(BIN)game.o $(BIN)screenManager.o $(BIN)screen.o
->>>>>>> 850d17effecfc7e730accbbaebfd68f3989c3a88
 	$(CXX) -o  $@ $^ $(CFLAGS) $(INCLUDE)
 
 $(BIN)%.o: $(SRC)%.cpp
