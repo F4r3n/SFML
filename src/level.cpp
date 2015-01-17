@@ -18,6 +18,6 @@ void Level::update(float dt) {
 
 }
 Level::~Level() {
-	for(auto &e : _entities)
-		delete e;
+/*	for(auto &e : _entities)
+		delete e;*/
 }
