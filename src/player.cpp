@@ -2,8 +2,8 @@
 #include <iostream>
 
 Player::Player(){
-	_x = 0;
-	_y = 0;
+	_x = 100;
+	_y = 100;
 	_dx = 0;
 	_dy = 0;
 	_box = new Box(_x,W,_y,H);
@@ -53,3 +53,13 @@ sf::Shape* Player::draw() {
 bool Player::isAlive() {
 	return true;
 }
+
+float Player::getX() {
+	return _x;
+}
+
+
+float Player::getY() {
+	return _y;
+}
+

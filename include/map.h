@@ -15,7 +15,7 @@ class Map {
 		~Map();
 		void load(const std::string &name);
 		void save();
-		void draw(sf::RenderWindow &window);
+		void draw(sf::RenderWindow &window,float x,float y);
 	private:
 		float _width;
 		float _height;

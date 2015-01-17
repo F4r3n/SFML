@@ -8,6 +8,9 @@ class Entity {
 		virtual sf::Shape* draw()=0;
 		virtual bool isAlive()=0;
 		virtual void update(float dt) = 0;
+		virtual float getX() = 0;
+		virtual float getY() = 0;
+
 
 };
 

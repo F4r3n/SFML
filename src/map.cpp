@@ -24,11 +24,11 @@ void Map::load(const std::string &name) {
 }
 
 
-void Map::draw(sf::RenderWindow &window) {
+void Map::draw(sf::RenderWindow &window,float x,float y) {
 
 	for(auto c: _tab) {
 		c.second->setFillColor(sf::Color::Green);
-		c.second->setPosition(c.first.first*100,c.first.second*100);
+		c.second->setPosition(100+c.first.first*100-x,100+c.first.second*100-y);
 		window.draw(*c.second);
 	}
 }

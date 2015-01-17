@@ -10,6 +10,8 @@ class Player : public Entity {
 		sf::Shape* draw();
 		void update(float dt);
 		bool isAlive();
+		float getX();
+		float getY();
 
 	private:
 		int _life;
