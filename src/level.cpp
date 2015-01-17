@@ -16,6 +16,7 @@ void Level::setLevel(int n) {
 }
 
 void Level::draw(sf::RenderWindow &window) {
+	_map->draw(window);
 	for (auto e : _entities) {
 		sf::Shape *s = e->draw();
 		window.draw(*s);

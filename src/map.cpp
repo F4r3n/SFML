@@ -16,10 +16,7 @@ void Map::load(const std::string &name) {
 		int j=0;
 
 		while(file >> tile) {
-			std::cout << i <<" " <<j <<std::endl;
-			
-			_tab[std::make_pair(i,j)] = tile;
-
+			_tab[std::make_pair(i,j)] = new sf::CircleShape(20.0f);
 			i=(i+1)%(int)_width;
 			if(i==0) j++;
 		}
@@ -29,4 +26,9 @@ void Map::load(const std::string &name) {
 
 void Map::draw(sf::RenderWindow &window) {
 
+	for(auto c: _tab) {
+		c.second->setFillColor(sf::Color::Green);
+		c.second->setPosition(c.first.first*100,c.first.second*100);
+		window.draw(*c.second);
+	}
 }
