@@ -1,11 +1,13 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <SFML/Graphics.hpp>
 #include "entity.h"
 #include "box.h"
+
 class Player : public Entity {
 	public:
-		Player();
+		Player(Map *map);
 		~Player();
 		sf::Shape* draw();
 		void update(float dt);
@@ -20,6 +22,7 @@ class Player : public Entity {
 		float _speed = 10000;
 		const float W = 20;
 		const float H = 20;
+		
 
 
 

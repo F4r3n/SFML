@@ -4,8 +4,22 @@
 Map::Map(float w,float h):_width(w),_height(h){
 }
 
+Map::Map() {
+
+}
+
 Map::~Map() {
 }
+
+Map& Map::operator=(const Map &map) {
+	if(this == &map) return *this;
+	_width=map._width;
+	_height=map._height;
+	_tab=map._tab;
+	return *this;
+
+}
+
 
 void Map::load(const std::string &name) {
 	std::string path = "assets/"+name;

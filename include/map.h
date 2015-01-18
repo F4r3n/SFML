@@ -12,6 +12,8 @@
 class Map {
 	public:
 		Map(float w,float h);
+		Map();
+		Map& operator=(const Map &map);
 		~Map();
 		void load(const std::string &name);
 		void save();

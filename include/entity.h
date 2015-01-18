@@ -2,10 +2,11 @@
 #define ENTITY_H
 
 #include <SFML/Graphics.hpp>
-#include "level.h"
+#include "map.h"
 
 class Entity {
 	public:
+		Entity(Map *map);
 		virtual ~Entity()=0;
 		virtual sf::Shape* draw()=0;
 		virtual bool isAlive()=0;
@@ -16,6 +17,7 @@ class Entity {
 	protected:
 		float _x,_y;
 		float _dx,_dy;
+		Map *_map;
 
 
 };

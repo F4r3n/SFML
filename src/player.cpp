@@ -2,7 +2,7 @@
 #include "engineConst.h"
 #include <iostream>
 
-Player::Player(){
+Player::Player(Map *map):Entity(map){
 	_x = 100;
 	_y = 100;
 	_dx = 0;
