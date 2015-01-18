@@ -16,6 +16,7 @@ Map& Map::operator=(const Map &map) {
 	_width=map._width;
 	_height=map._height;
 	_tab=map._tab;
+	_shapes = map._shapes;
 	return *this;
 
 }
@@ -30,9 +31,13 @@ void Map::load(const std::string &name) {
 		int j=0;
 
 		while(file >> tile) {
-			_tab[std::make_pair(i,j)] = new sf::CircleShape(20.0f);
+			_tab[std::make_pair(i,j)] = new Box(i*40,20,j*40,20);
 			i=(i+1)%(int)_width;
 			if(i==0) j++;
+		}
+		for(auto t : _tab) {
+			sf::Shape *r = new sf::RectangleShape(sf::Vector2f(t.second->w,t.second->h));
+			_shapes[t.second] = r;
 		}
 	}
 }
@@ -40,9 +45,9 @@ void Map::load(const std::string &name) {
 
 void Map::draw(sf::RenderWindow &window,float x,float y) {
 
-	for(auto c: _tab) {
-		c.second->setFillColor(sf::Color::Green);
-		c.second->setPosition(100+c.first.first*100-x,100+c.first.second*100-y);
-		window.draw(*c.second);
+	for(auto s: _shapes) {
+		s.second->setFillColor(sf::Color::Green);
+		s.second->setPosition(s.first->x+100-x,s.first->y+100-y);
+		window.draw(*s.second);
 	}
 }

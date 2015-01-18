@@ -7,6 +7,7 @@
 #include <utility>
 #include <SFML/Graphics.hpp>
 #include <unistd.h>
+#include "box.h"
 
 
 class Map {
@@ -21,7 +22,8 @@ class Map {
 	private:
 		float _width;
 		float _height;
-		std::map<std::pair<int,int>,sf::Shape*> _tab;
+		std::map<std::pair<int,int>,Box*> _tab;
+		std::map<Box*,sf::Shape*> _shapes;
 
 };
 
