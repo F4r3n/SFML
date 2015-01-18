@@ -13,6 +13,11 @@ Map::~Map() {
 
 Map& Map::operator=(const Map &map) {
 	if(this == &map) return *this;
+	for(auto &s : _shapes) {
+		delete s.first;
+		delete s.second;
+	}
+
 	_width=map._width;
 	_height=map._height;
 	_tab=map._tab;

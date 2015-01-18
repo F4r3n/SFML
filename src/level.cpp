@@ -33,6 +33,7 @@ void Level::update(float dt) {
 
 Level& Level::operator=(Level &level) {
 	if(&level == this) return *this;
+	for(auto &e : _entities) delete e;
 	_entities = level._entities;
 	_n =level._n;
 	_map = level._map;

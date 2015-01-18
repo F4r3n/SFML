@@ -3,6 +3,10 @@
 Box::Box(float x,float w, float y, float h) : x(x), w(w),y(y),h(h) {
 }
 
+Box::~Box() {
+
+}
+
 bool Box::AABB(Box b) {
 	if((b.x >= x + w)      // trop à droite
 			  || (b.x + b.w <= x) // trop à gauche
