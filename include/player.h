@@ -17,9 +17,6 @@ class Player : public Entity {
 		int _life;
 		Box *_box;
 		sf::Shape *_s;
-		float _dx,_dy;
-		float _x;
-		float _y;
 		float _speed = 10000;
 		const float W = 20;
 		const float H = 20;
