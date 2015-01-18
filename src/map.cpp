@@ -11,6 +11,10 @@ Map::Map() {
 Map::~Map() {
 }
 
+std::map<std::pair<int,int>,Box*> Map::getTab() {
+	return _tab;
+}
+
 Map& Map::operator=(const Map &map) {
 	if(this == &map) return *this;
 	for(auto &s : _shapes) {
@@ -43,6 +47,7 @@ void Map::load(const std::string &name) {
 		for(auto t : _tab) {
 			sf::Shape *r = new sf::RectangleShape(sf::Vector2f(t.second->w,t.second->h));
 			_shapes[t.second] = r;
+			std::cout << t.second->x;
 		}
 	}
 }
@@ -51,8 +56,12 @@ void Map::load(const std::string &name) {
 void Map::draw(sf::RenderWindow &window,float x,float y) {
 
 	for(auto s: _shapes) {
+		std::cout << s.first->x << " " << x << std::endl;
 		s.second->setFillColor(sf::Color::Green);
-		s.second->setPosition(s.first->x+100-x,s.first->y+100-y);
+	//	s.first->x = -x+100;
+	//	s.first->y = -y+100;
+
+		s.second->setPosition(s.first->x-x,s.first->y-y);
 		window.draw(*s.second);
 	}
 }

@@ -19,6 +19,7 @@ class Map {
 		void load(const std::string &name);
 		void save();
 		void draw(sf::RenderWindow &window,float x,float y);
+		std::map<std::pair<int,int>,Box*> getTab();
 	private:
 		float _width;
 		float _height;
