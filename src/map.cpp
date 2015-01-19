@@ -41,10 +41,10 @@ void Map::load(const std::string &name) {
 		int j=0;
 
 		while(file >> tile) {
-			_tab[std::make_pair(i,j)] = new Case(new Box(i*40,20,j*40,20),
-												 new sf::RectangleShape(sf::Vector2f(20,20)),
-												 i*40,
-												 j*40);
+			_tab[std::make_pair(i,j)] = new Case(new Box(i*40+100,100,j*40+100,100),
+												 new sf::RectangleShape(sf::Vector2f(100,100)),
+												 i*40+100,
+												 j*40+100);
 
 			i=(i+1)%(int)_width;
 			if(i==0) j++;

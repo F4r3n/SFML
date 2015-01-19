@@ -64,11 +64,31 @@ void Player::update(float dt) {
 	auto tab = _map->getTab();
 	for(auto t : tab) {
 		if(_box->AABB(t.second->box)){
-			if(dir==2) {
+			if(dir ==1) {
 				_dx = 0;
-
-				std::cout << _box->x <<" " <<t.second->box->x<<std::endl;
+				accX=0;
+				_box->x = t.second->box->x-W-1;
+				
+			}
+			else if(dir==2) {
+				accX=0;
+				_dx = 0;
 				_box->x = t.second->box->x+t.second->box->w;
+			}
+			else if(dir ==3) {
+				accY=0;
+				_dy = 0;
+				_box->y = t.second->box->y-H;
+				
+			}
+			else if(dir==4) {
+				accY=0;
+				_dy = 0;
+				_box->y = t.second->box->y+t.second->box->h;
+			}
+			else {
+				_dx = 0;
+				_dy = 0;
 			}
 
 		}
