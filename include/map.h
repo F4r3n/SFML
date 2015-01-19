@@ -8,7 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <unistd.h>
 #include "box.h"
-
+#include "case.h"
 
 class Map {
 	public:
@@ -19,12 +19,12 @@ class Map {
 		void load(const std::string &name);
 		void save();
 		void draw(sf::RenderWindow &window,float x,float y);
-		std::map<std::pair<int,int>,Box*> getTab();
+		std::map<std::pair<int,int>,Case*> getTab();
 	private:
 		float _width;
 		float _height;
-		std::map<std::pair<int,int>,Box*> _tab;
-		std::map<Box*,sf::Shape*> _shapes;
+		std::map<std::pair<int,int>,Case*> _tab;
+
 
 };
 
