@@ -24,6 +24,8 @@ class Map {
 		float _width;
 		float _height;
 		std::map<std::pair<int,int>,Case*> _tab;
+		float _sizeX;
+		float _sizeY;
 
 
 };

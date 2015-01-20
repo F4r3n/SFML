@@ -19,26 +19,21 @@ void Player::update(float dt) {
 	float acc = 200000;
 	float accX = 0;
 	float accY = 0;
-	int dir =0;
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
 		accX+=acc;
-		dir = 1;
 	}
 
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 		accX-=acc;
-		dir = 2;
 	}
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
 		accY+=acc;
-		dir = 3;
 	}
 
 
 	if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
 		accY-=acc;
-		dir = 4;
 	}
 
 	if(_box->x >= EngineConst::WIDTH-_box->w) {
@@ -63,25 +58,28 @@ void Player::update(float dt) {
 
 	auto tab = _map->getTab();
 	for(auto t : tab) {
+
 		if(_box->AABB(t.second->box)){
-			if(dir ==1) {
+			int dir = _box->direction(t.second->box);
+		//	std::cout << dir <<std::endl;
+			if(dir ==0) {
 				_dx = 0;
 				accX=0;
-				_box->x = t.second->box->x-W-1;
+				_box->x = t.second->box->x-W;
 				
 			}
-			else if(dir==2) {
+			else if(dir==1) {
 				accX=0;
 				_dx = 0;
 				_box->x = t.second->box->x+t.second->box->w;
 			}
-			else if(dir ==3) {
+			else if(dir ==2) {
 				accY=0;
 				_dy = 0;
 				_box->y = t.second->box->y-H;
 				
 			}
-			else if(dir==4) {
+			else if(dir==3) {
 				accY=0;
 				_dy = 0;
 				_box->y = t.second->box->y+t.second->box->h;

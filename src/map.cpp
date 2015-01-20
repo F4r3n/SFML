@@ -2,7 +2,11 @@
 #include <iostream>
 
 Map::Map(float w,float h):_width(w),_height(h){
+	_sizeX = 100;
+	_sizeY = 100;
+
 }
+
 
 Map::Map() {
 
@@ -41,10 +45,11 @@ void Map::load(const std::string &name) {
 		int j=0;
 
 		while(file >> tile) {
-			_tab[std::make_pair(i,j)] = new Case(new Box(i*40+100,100,j*40+100,100),
-												 new sf::RectangleShape(sf::Vector2f(100,100)),
-												 i*40+100,
-												 j*40+100);
+			int pos = 200;
+			_tab[std::make_pair(i,j)] = new Case(new Box(i*pos+100,_sizeX,j*pos+100,_sizeY),
+												 new sf::RectangleShape(sf::Vector2f(_sizeX,_sizeY)),
+												 i*pos+100,
+												 j*pos+100);
 
 			i=(i+1)%(int)_width;
 			if(i==0) j++;
