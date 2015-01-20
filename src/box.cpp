@@ -1,7 +1,11 @@
 #include "box.h"
 #include <iostream>
 Box::Box(float x,float w, float y, float h) : x(x), w(w),y(y),h(h) {
-	
+
+}
+
+Box::Box() {
+
 }
 
 Box::~Box() {
@@ -27,28 +31,19 @@ bool Box::AABB(Box *b) {
 		return true; 
 }
 
-int Box::direction(Box *b) {
-	std::map<int,float> dir;
-	float centerX = b->getCenterX();
-	float centerY = b->getCenterY();
+int Box::direction(Box *bo) {
+	int i=0;
+	std::vector<Box> _sideBox;
+	int b = 3;
 
-	dir[2] = (abs((y + h)-centerY));
-	dir[3] = (abs(y-centerY));
-	dir[1] = (abs(x-centerX));
-	dir[0] = (abs((x+w)-centerX));
-
-	int min = 1000;
-	int key = -1;
-	for(auto d : dir) {
-		std::cout << d.first << " " << d.second << std::endl;
-		if(min > d.second) {
-			min = d.second;
-			key = d.first;
-		}
+	_sideBox.push_back(Box(x+1,b,y+b,h-2*b));
+	_sideBox.push_back(Box(x+w-b-1,b,y+b,h-2*b));
+	_sideBox.push_back(Box(x+b,w-b*2,y+1,b));
+	_sideBox.push_back(Box(x+b,w-b*2,y+h-b-1,b));
+	for(auto s : _sideBox) {
+		if(s.AABB(bo)) return i;
+		i++;
 	}
-	std::cout << "\n" <<std::endl;
-
-
-	return key;
+	return -1;
 
 }

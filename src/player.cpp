@@ -61,25 +61,25 @@ void Player::update(float dt) {
 
 		if(_box->AABB(t.second->box)){
 			int dir = _box->direction(t.second->box);
-		//	std::cout << dir <<std::endl;
-			if(dir ==0) {
+			std::cout << dir << "\n" <<std::endl;
+			if(dir ==1) {
 				_dx = 0;
 				accX=0;
 				_box->x = t.second->box->x-W;
 				
 			}
-			else if(dir==1) {
+			else if(dir==0) {
 				accX=0;
 				_dx = 0;
 				_box->x = t.second->box->x+t.second->box->w;
 			}
-			else if(dir ==2) {
+			else if(dir ==3) {
 				accY=0;
 				_dy = 0;
 				_box->y = t.second->box->y-H;
 				
 			}
-			else if(dir==3) {
+			else if(dir==2) {
 				accY=0;
 				_dy = 0;
 				_box->y = t.second->box->y+t.second->box->h;
