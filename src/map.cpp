@@ -4,7 +4,8 @@
 Map::Map(float w,float h):_width(w),_height(h){
 	_sizeX = 100;
 	_sizeY = 100;
-
+b2Vec2 gravity (0.0f, 10.0f);
+world = new b2World(gravity,true);
 }
 
 
@@ -46,10 +47,19 @@ void Map::load(const std::string &name) {
 
 		while(file >> tile) {
 			int pos = 200;
+			b2BodyDef groundBodyDef;
+			groundBodyDef.position.Set(i*pos+100, j*pos+100);
+			b2Body* groundBody = world->CreateBody(&groundBodyDef);
+			b2PolygonShape groundBox;
+
+			groundBox.SetAsBox(_sizeX,_sizeY); 
+			groundBody->CreateFixture(&groundBox, 0.0f);
+
+
 			_tab[std::make_pair(i,j)] = new Case(new Box(i*pos+100,_sizeX,j*pos+100,_sizeY),
-												 new sf::RectangleShape(sf::Vector2f(_sizeX,_sizeY)),
-												 i*pos+100,
-												 j*pos+100);
+					  new sf::RectangleShape(sf::Vector2f(_sizeX,_sizeY)),
+					  i*pos+100,
+					  j*pos+100,groundBody);
 
 			i=(i+1)%(int)_width;
 			if(i==0) j++;

@@ -2,7 +2,7 @@
 #include <iostream>
 
 Level::Level(int n):_n(n) {
-	
+
 }
 
 Level::Level() {

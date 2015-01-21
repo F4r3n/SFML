@@ -3,12 +3,26 @@
 #include <iostream>
 
 Player::Player(Map *map):Entity(map){
-	_x = 0;
-	_y = 0;
+	_x = 100;
+	_y = 100;
 	_dx = 0;
 	_dy = 0;
 	_box = new Box(_x,W,_y,H);
 	_s = new sf::RectangleShape(sf::Vector2f(W,H));
+	b2BodyDef bodyDef;
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.position.Set(_x,_y );
+	body = map->world->CreateBody(&bodyDef);
+	b2PolygonShape *dynamicBox = new b2PolygonShape();
+
+	dynamicBox->SetAsBox(W, H);
+	b2FixtureDef fixtureDef;
+	fixtureDef.shape = dynamicBox;
+	fixtureDef.density = 1.0f;
+	fixtureDef.friction = 0.3f;
+	body->CreateFixture(&fixtureDef);
+
+
 }
 
 
@@ -66,7 +80,7 @@ void Player::update(float dt) {
 				_dx = 0;
 				accX=0;
 				_box->x = t.second->box->x-W;
-				
+
 			}
 			else if(dir==0) {
 				accX=0;
@@ -77,16 +91,12 @@ void Player::update(float dt) {
 				accY=0;
 				_dy = 0;
 				_box->y = t.second->box->y-H;
-				
+
 			}
 			else if(dir==2) {
 				accY=0;
 				_dy = 0;
 				_box->y = t.second->box->y+t.second->box->h;
-			}
-			else {
-				_dx = 0;
-				_dy = 0;
 			}
 
 		}
@@ -104,7 +114,6 @@ void Player::update(float dt) {
 
 sf::Shape* Player::draw() {
 
-	_s->setPosition(_box->x,_box->y);
 	_s->setFillColor(sf::Color::White);
 	return _s;
 }

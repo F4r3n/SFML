@@ -9,6 +9,7 @@
 #include <unistd.h>
 #include "box.h"
 #include "case.h"
+#include <Box2D/Box2D.h>
 
 class Map {
 	public:
@@ -20,6 +21,8 @@ class Map {
 		void save();
 		void draw(sf::RenderWindow &window,float x,float y);
 		std::map<std::pair<int,int>,Case*> getTab();
+
+		b2World *world;
 	private:
 		float _width;
 		float _height;

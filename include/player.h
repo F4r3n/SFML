@@ -20,9 +20,9 @@ class Player : public Entity {
 		Box *_box;
 		sf::Shape *_s;
 		float _speed = 10000;
-		const float W = 20;
-		const float H = 20;
-		
+		const float W = 40;		
+		const float H = 40;
+		b2Body* body;
 
 
 

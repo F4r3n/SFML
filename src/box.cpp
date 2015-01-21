@@ -1,4 +1,5 @@
 #include "box.h"
+
 #include <iostream>
 Box::Box(float x,float w, float y, float h) : x(x), w(w),y(y),h(h) {
 
@@ -34,12 +35,12 @@ bool Box::AABB(Box *b) {
 int Box::direction(Box *bo) {
 	int i=0;
 	std::vector<Box> _sideBox;
-	int b = 3;
+	int b = 5;
 
-	_sideBox.push_back(Box(x+1,b,y+b,h-2*b));
-	_sideBox.push_back(Box(x+w-b-1,b,y+b,h-2*b));
-	_sideBox.push_back(Box(x+b,w-b*2,y+1,b));
-	_sideBox.push_back(Box(x+b,w-b*2,y+h-b-1,b));
+	_sideBox.push_back(Box(x,b,y+b,h-2*b));
+	_sideBox.push_back(Box(x+w-b,b,y+b,h-2*b));
+	_sideBox.push_back(Box(x+b,w-b*2,y,b));
+	_sideBox.push_back(Box(x+b,w-b*2,y+h-b,b));
 	for(auto s : _sideBox) {
 		if(s.AABB(bo)) return i;
 		i++;

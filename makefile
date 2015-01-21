@@ -1,5 +1,5 @@
 CXX = g++ 
-CFLAGS = -W -Wall --std=c++11 -g -lsfml-graphics -lsfml-window -lsfml-system
+CFLAGS = -W -Wall --std=c++11 -g -lsfml-graphics -lsfml-window -lsfml-system -lBox2D
 SRC = src/
 INCLUDE=-I include/
 BIN= bin/
