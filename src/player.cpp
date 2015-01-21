@@ -11,7 +11,7 @@ Player::Player(Map *map):Entity(map){
 	_s = new sf::RectangleShape(sf::Vector2f(W,H));
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(_x,_y );
+	bodyDef.position.Set(_x/30.f,_y/30.f );
 	body = map->world->CreateBody(&bodyDef);
 	b2PolygonShape *dynamicBox = new b2PolygonShape();
 
@@ -30,6 +30,7 @@ Player::~Player() {
 }
 
 void Player::update(float dt) {
+	std::cout << body->GetWorld()->GetGravity().y <<std::endl;
 	float acc = 200000;
 	float accX = 0;
 	float accY = 0;
@@ -74,30 +75,6 @@ void Player::update(float dt) {
 	for(auto t : tab) {
 
 		if(_box->AABB(t.second->box)){
-			int dir = _box->direction(t.second->box);
-			std::cout << dir << "\n" <<std::endl;
-			if(dir ==1) {
-				_dx = 0;
-				accX=0;
-				_box->x = t.second->box->x-W;
-
-			}
-			else if(dir==0) {
-				accX=0;
-				_dx = 0;
-				_box->x = t.second->box->x+t.second->box->w;
-			}
-			else if(dir ==3) {
-				accY=0;
-				_dy = 0;
-				_box->y = t.second->box->y-H;
-
-			}
-			else if(dir==2) {
-				accY=0;
-				_dy = 0;
-				_box->y = t.second->box->y+t.second->box->h;
-			}
 
 		}
 	}
@@ -114,6 +91,7 @@ void Player::update(float dt) {
 
 sf::Shape* Player::draw() {
 
+	_s->setPosition(_x,_y);
 	_s->setFillColor(sf::Color::White);
 	return _s;
 }

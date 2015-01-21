@@ -4,8 +4,8 @@
 Map::Map(float w,float h):_width(w),_height(h){
 	_sizeX = 100;
 	_sizeY = 100;
-b2Vec2 gravity (0.0f, 10.0f);
-world = new b2World(gravity,true);
+	b2Vec2 gravity (0.0f, 10.0f);
+	world = new b2World(gravity,true);
 }
 
 
@@ -31,6 +31,7 @@ Map& Map::operator=(const Map &map) {
 
 	_width=map._width;
 	_height=map._height;
+	world = map.world;
 	_tab=map._tab;
 	return *this;
 
@@ -48,7 +49,7 @@ void Map::load(const std::string &name) {
 		while(file >> tile) {
 			int pos = 200;
 			b2BodyDef groundBodyDef;
-			groundBodyDef.position.Set(i*pos+100, j*pos+100);
+			groundBodyDef.position.Set((i*pos+100)/30.f, (j*pos+100)/30.f);
 			b2Body* groundBody = world->CreateBody(&groundBodyDef);
 			b2PolygonShape groundBox;
 
@@ -75,7 +76,7 @@ void Map::draw(sf::RenderWindow &window,float x,float y) {
 		t.second->box->x = t.second->x-x;
 		t.second->box->y = t.second->y-y;
 
-
+		t.second->groundBody->SetTransform(b2Vec2(t.second->box->x,t.second->box->y),0);
 		t.second->s->setPosition(t.second->box->x,t.second->box->y);
 		window.draw(*t.second->s);
 	}
