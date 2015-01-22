@@ -55,6 +55,7 @@ void Map::load(const std::string &name) {
 
 			groundBox.SetAsBox(_sizeX,_sizeY); 
 			groundBody->CreateFixture(&groundBox, 0.0f);
+		//	std::cout << groundBody->F
 
 
 			_tab[std::make_pair(i,j)] = new Case(new Box(i*pos+200,_sizeX,j*pos+200,_sizeY),

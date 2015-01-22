@@ -19,7 +19,7 @@ Player::Player(Map *map):Entity(map){
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = dynamicBox;
 	fixtureDef.density = 1.0f;
-	fixtureDef.friction = 0.3f;
+	fixtureDef.friction = 0.8f;
 	body->CreateFixture(&fixtureDef);
 	_s->setPosition(_x,_y);
 
@@ -56,7 +56,7 @@ void Player::update(float dt) {
 		_box->x = EngineConst::WIDTH-_box->w;
 	}
 
-	if(_box->x <=0) {
+/*	if(_box->x <=0) {
 		_dx = 0;
 		_box->x = 0;
 	}
@@ -68,7 +68,7 @@ void Player::update(float dt) {
 	if(_box->y <=0) {
 		_dy = 0;
 		_box->y = 0;
-	}
+	}*/
 
 
 	auto tab = _map->getTab();
@@ -87,7 +87,7 @@ void Player::update(float dt) {
 	_dy *=0.9;
 	_dy +=dt*accY;
 	_box->y  +=dt*_dy;
-	body->SetTransform(b2Vec2(dt*_dx,dt*_dy),body->GetAngle());
+	body->SetTransform(b2Vec2(body->GetPosition().x+dt*_dx,body->GetPosition().y+dt*_dy),body->GetAngle());
 
 	std::cout <<body->GetPosition().x<< std::endl; 
 }

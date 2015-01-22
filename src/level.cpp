@@ -6,6 +6,7 @@ Level::Level(int n):_n(n) {
 }
 
 Level::Level() {
+
 	view =new sf::View();
 	view->setSize(800,600);
 	_map = new Map(5,2);
@@ -31,7 +32,7 @@ void Level::draw(sf::RenderWindow &window) {
 
 void Level::update(float dt) {
 
-	_map->world->Step(dt,8,3);
+	_map->world->Step(dt,100,3);
 	for (auto e : _entities) {
 		e->update(dt);
 	}
