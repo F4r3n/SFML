@@ -2,8 +2,8 @@
 #include <iostream>
 
 Map::Map(float w,float h):_width(w),_height(h){
-	_sizeX = 100;
-	_sizeY = 100;
+	_sizeX = 50;
+	_sizeY = 50;
 	b2Vec2 gravity (0.0f, 10.0f);
 	world = new b2World(gravity,true);
 }
@@ -53,7 +53,7 @@ void Map::load(const std::string &name) {
 			b2Body* groundBody = world->CreateBody(&groundBodyDef);
 			b2PolygonShape groundBox;
 
-			groundBox.SetAsBox(_sizeX,_sizeY); 
+			groundBox.SetAsBox(_sizeX/30.f,_sizeY/30.f); 
 			groundBody->CreateFixture(&groundBox, 0.0f);
 		//	std::cout << groundBody->F
 

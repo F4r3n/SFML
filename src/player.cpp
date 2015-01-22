@@ -80,14 +80,18 @@ void Player::update(float dt) {
 	}
 
 
-	_dx *=0.9;
+	_dx *=0.85;
 	_dx +=dt*accX;
 	_box->x  +=dt*_dx;
 
-	_dy *=0.9;
+	_dy *=0.85;
 	_dy +=dt*accY;
 	_box->y  +=dt*_dy;
-	body->SetTransform(b2Vec2(body->GetPosition().x+dt*_dx,body->GetPosition().y+dt*_dy),body->GetAngle());
+	//	body->SetTransform(b2Vec2(body->GetPosition().x+dt*_dx,body->GetPosition().y+dt*_dy),body->GetAngle());
+	b2Vec2 vel = body->GetLinearVelocity();
+	vel.x = dt*_dx*10000;
+	vel.y = dt*_dy*10000;
+	body->SetLinearVelocity( vel );
 
 	std::cout <<body->GetPosition().x<< std::endl; 
 }
@@ -95,7 +99,7 @@ void Player::update(float dt) {
 sf::Shape* Player::draw() {
 	_s->setFillColor(sf::Color::White);
 	_s->setPosition(body->GetPosition().x,body->GetPosition().y);
-	
+
 	return _s;
 }
 
