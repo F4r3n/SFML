@@ -11,7 +11,7 @@ Player::Player(Map *map):Entity(map){
 	_s = new sf::RectangleShape(sf::Vector2f(W,H));
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(_x/30.f,_y/30.f );
+	bodyDef.position.Set(_x,_y );
 	body = map->world->CreateBody(&bodyDef);
 	b2PolygonShape *dynamicBox = new b2PolygonShape();
 
@@ -21,6 +21,7 @@ Player::Player(Map *map):Entity(map){
 	fixtureDef.density = 1.0f;
 	fixtureDef.friction = 0.3f;
 	body->CreateFixture(&fixtureDef);
+	_s->setPosition(_x,_y);
 
 
 }
@@ -30,7 +31,6 @@ Player::~Player() {
 }
 
 void Player::update(float dt) {
-	std::cout << body->GetWorld()->GetGravity().y <<std::endl;
 	float acc = 200000;
 	float accX = 0;
 	float accY = 0;
@@ -87,12 +87,15 @@ void Player::update(float dt) {
 	_dy *=0.9;
 	_dy +=dt*accY;
 	_box->y  +=dt*_dy;
+	body->SetTransform(b2Vec2(dt*_dx,dt*_dy),body->GetAngle());
+
+	std::cout <<body->GetPosition().x<< std::endl; 
 }
 
 sf::Shape* Player::draw() {
-
-	_s->setPosition(_x,_y);
 	_s->setFillColor(sf::Color::White);
+	_s->setPosition(body->GetPosition().x,body->GetPosition().y);
+	
 	return _s;
 }
 
@@ -101,11 +104,11 @@ bool Player::isAlive() {
 }
 
 float Player::getX() {
-	return _box->x;
+	return body->GetPosition().x;
 }
 
 
 float Player::getY() {
-	return _box->y;
+	return body->GetPosition().y;
 }
 

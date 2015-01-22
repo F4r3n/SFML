@@ -23,6 +23,7 @@ class Level {
 		int _n;
 		Map *_map;
 		sf::RenderWindow _window;
+		sf::View *view;
 
 };
 

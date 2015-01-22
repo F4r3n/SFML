@@ -47,9 +47,9 @@ void Map::load(const std::string &name) {
 		int j=0;
 
 		while(file >> tile) {
-			int pos = 200;
+			int pos = 100;
 			b2BodyDef groundBodyDef;
-			groundBodyDef.position.Set((i*pos+100)/30.f, (j*pos+100)/30.f);
+			groundBodyDef.position.Set((i*pos+100), (j*pos+100));
 			b2Body* groundBody = world->CreateBody(&groundBodyDef);
 			b2PolygonShape groundBox;
 
@@ -57,14 +57,19 @@ void Map::load(const std::string &name) {
 			groundBody->CreateFixture(&groundBox, 0.0f);
 
 
-			_tab[std::make_pair(i,j)] = new Case(new Box(i*pos+100,_sizeX,j*pos+100,_sizeY),
+			_tab[std::make_pair(i,j)] = new Case(new Box(i*pos+200,_sizeX,j*pos+200,_sizeY),
 					  new sf::RectangleShape(sf::Vector2f(_sizeX,_sizeY)),
-					  i*pos+100,
-					  j*pos+100,groundBody);
+					  i*pos+200,
+					  j*pos+200,groundBody);
+
+			_tab[std::make_pair(i,j)]->s->setFillColor(sf::Color::Green);
+			_tab[std::make_pair(i,j)]->s->setPosition(groundBody->GetPosition().x,groundBody->GetPosition().y);	
 
 			i=(i+1)%(int)_width;
 			if(i==0) j++;
+
 		}
+
 	}
 }
 
@@ -73,11 +78,6 @@ void Map::draw(sf::RenderWindow &window,float x,float y) {
 
 	for(auto &t: _tab) {
 		t.second->s->setFillColor(sf::Color::Green);
-		t.second->box->x = t.second->x-x;
-		t.second->box->y = t.second->y-y;
-
-		t.second->groundBody->SetTransform(b2Vec2(t.second->box->x,t.second->box->y),0);
-		t.second->s->setPosition(t.second->box->x,t.second->box->y);
 		window.draw(*t.second->s);
 	}
 }
