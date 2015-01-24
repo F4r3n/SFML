@@ -4,8 +4,8 @@
 Map::Map(float w,float h):_width(w),_height(h){
 	_sizeX = 50;
 	_sizeY = 50;
-	b2Vec2 gravity (0.0f, 10.0f);
-	world = new b2World(gravity,true);
+//	b2Vec2 gravity (0.0f, 10.0f);
+	world = new b2World(b2Vec2(0.0f,10.0f),true);
 }
 
 
@@ -23,7 +23,6 @@ std::map<std::pair<int,int>,Case*> Map::getTab() {
 Map& Map::operator=(const Map &map) {
 	if(this == &map) return *this;
 	for(auto &t : _tab) {
-		delete t.second->box;
 		delete t.second->s;
 
 		delete t.second;
@@ -53,15 +52,14 @@ void Map::load(const std::string &name) {
 			b2Body* groundBody = world->CreateBody(&groundBodyDef);
 			b2PolygonShape groundBox;
 
-			groundBox.SetAsBox(_sizeX/30.f,_sizeY/30.f); 
+			groundBox.SetAsBox(_sizeX/2.f,_sizeY/2.f); 
 			groundBody->CreateFixture(&groundBox, 0.0f);
 		//	std::cout << groundBody->F
 
 
-			_tab[std::make_pair(i,j)] = new Case(new Box(i*pos+200,_sizeX,j*pos+200,_sizeY),
-					  new sf::RectangleShape(sf::Vector2f(_sizeX,_sizeY)),
+			_tab[std::make_pair(i,j)] = new Case(new sf::RectangleShape(sf::Vector2f(_sizeX,_sizeY)),
 					  i*pos+200,
-					  j*pos+200,groundBody);
+					  j*pos+200);
 
 			_tab[std::make_pair(i,j)]->s->setFillColor(sf::Color::Green);
 			_tab[std::make_pair(i,j)]->s->setPosition(groundBody->GetPosition().x,groundBody->GetPosition().y);	
@@ -75,7 +73,7 @@ void Map::load(const std::string &name) {
 }
 
 
-void Map::draw(sf::RenderWindow &window,float x,float y) {
+void Map::draw(sf::RenderWindow &window) {
 
 	for(auto &t: _tab) {
 		t.second->s->setFillColor(sf::Color::Green);

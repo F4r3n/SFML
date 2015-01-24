@@ -22,7 +22,7 @@ void Level::draw(sf::RenderWindow &window) {
 
 	window.setView(*view);
 
-	_map->draw(window,_entities[0]->getX(),_entities[0]->getY());
+	_map->draw(window);
 	view->setCenter(_entities[0]->getX(),_entities[0]->getY());
 	for (auto e : _entities) {
 		sf::Shape *s = e->draw();

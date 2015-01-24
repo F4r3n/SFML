@@ -17,7 +17,7 @@ int main()
 	Window.setFramerateLimit(60);
 
 	/** Prepare the world */
-	b2Vec2 Gravity(0.f, 9.8f);
+	b2Vec2 Gravity(0.f, 15.f);
 	b2World World(Gravity,true);
 	CreateGround(World, 400.f, 500.f);
 
@@ -39,7 +39,7 @@ int main()
 		{
 			if (BodyIterator->GetType() == b2_dynamicBody)
 			{
-				sf::RectangleShape Sprite(sf::Vector2f(20.f,20.f));
+				sf::RectangleShape Sprite(sf::Vector2f(32.f,32.f));
 				Sprite.setFillColor(sf::Color::Green);
 			//	Sprite.setTexture(BoxTexture);
 				Sprite.setOrigin(16.f, 16.f);
@@ -50,7 +50,7 @@ int main()
 			}
 			else {
 
-				sf::RectangleShape GroundSprite(sf::Vector2f(400.f,500.f));
+				sf::RectangleShape GroundSprite(sf::Vector2f(800.f,500.f));
 				GroundSprite.setFillColor(sf::Color::Green);
 			
 				GroundSprite.setOrigin(400.f, 8.f);

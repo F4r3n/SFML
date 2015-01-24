@@ -19,7 +19,7 @@ class Map {
 		~Map();
 		void load(const std::string &name);
 		void save();
-		void draw(sf::RenderWindow &window,float x,float y);
+		void draw(sf::RenderWindow &window);
 		std::map<std::pair<int,int>,Case*> getTab();
 
 		b2World *world;

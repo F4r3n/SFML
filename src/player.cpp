@@ -12,15 +12,17 @@ Player::Player(Map *map):Entity(map){
 	b2BodyDef bodyDef;
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.position.Set(_x,_y );
+	bodyDef.allowSleep = false;
 	body = map->world->CreateBody(&bodyDef);
 	b2PolygonShape *dynamicBox = new b2PolygonShape();
 
-	dynamicBox->SetAsBox(W, H);
+	dynamicBox->SetAsBox(W/2.f, H/2.f);
 	b2FixtureDef fixtureDef;
 	fixtureDef.shape = dynamicBox;
 	fixtureDef.density = 1.0f;
 	fixtureDef.friction = 0.8f;
 	body->CreateFixture(&fixtureDef);
+	
 	_s->setPosition(_x,_y);
 
 
@@ -92,8 +94,7 @@ void Player::update(float dt) {
 	vel.x = dt*_dx*10000;
 	vel.y = dt*_dy*10000;
 	body->SetLinearVelocity( vel );
-
-	std::cout <<body->GetPosition().x<< std::endl; 
+//	std::cout <<body->GetPosition().x<< std::endl; 
 }
 
 sf::Shape* Player::draw() {
